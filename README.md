@@ -1,0 +1,1 @@
+# This repo contains my notes and assignments from LS Programming Foundations unit
