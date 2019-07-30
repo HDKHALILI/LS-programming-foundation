@@ -44,7 +44,7 @@ def valid_term?(term)
   valid_integer(term) && term.to_i >= 1 && term.to_i <= 30
 end
 
-def retrieve_loan_amount
+def loan_amount
   loan_amount = ''
   loop do
     prompt(MESSAGE[:amount])
@@ -55,7 +55,7 @@ def retrieve_loan_amount
   loan_amount.to_i
 end
 
-def retrieve_annual_rate
+def annual_rate
   annual_rate = ''
   loop do
     prompt(MESSAGE[:rate])
@@ -66,7 +66,7 @@ def retrieve_annual_rate
   annual_rate.to_f
 end
 
-def retrieve_loan_term
+def loan_term
   term_in_years = ''
   loop do
     prompt(MESSAGE[:duration])
@@ -77,7 +77,7 @@ def retrieve_loan_term
   term_in_years.to_i
 end
 
-def display_monthly_payment(loan_amount, annual_rate, term_in_years)
+def display_result(loan_amount, annual_rate, term_in_years)
   monthly_rate = annual_rate / 100 / 12
   term_in_months = term_in_years * 12
   monthly_payment = monthly_payment(loan_amount, monthly_rate, term_in_months)
@@ -94,10 +94,10 @@ end
 
 prompt(MESSAGE[:welcome])
 loop do # main loop
-  loan_amount = retrieve_loan_amount
-  annual_rate = retrieve_annual_rate
-  term_in_years = retrieve_loan_term
-  display_monthly_payment(loan_amount, annual_rate, term_in_years)
+  amount = loan_amount
+  rate = annual_rate
+  term = loan_term
+  display_result(amount, rate, term)
   puts "_" * 20
   prompt(MESSAGE[:calculate_again])
   answer = gets.chomp.downcase
